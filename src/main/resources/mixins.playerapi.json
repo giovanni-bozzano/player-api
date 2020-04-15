@@ -1,0 +1,13 @@
+{
+  "package": "api.player.asm.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "mixins.playerapi.refmap.json",
+  "mixins": [
+    "net.minecraft.client.entity.player.MixinClientPlayerEntity",
+    "net.minecraft.entity.MixinEntity",
+    "net.minecraft.entity.player.MixinServerPlayerEntity"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
