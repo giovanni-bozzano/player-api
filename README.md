@@ -8,6 +8,6 @@ Player API is an API which provides access to the client class "ClientEntityPlay
 
 ## Installation
 
-1. Download [MixinBootstrap](https://github.com/LXGaming/MixinBootstrap/releases/download/v1.0.2/MixinBootstrap-1.0.2.jar)
+1. Download [MixinBootstrap](https://github.com/LXGaming/MixinBootstrap/releases/download/v1.0.3/MixinBootstrap-1.0.3.jar)
 2. Download Player API
 4. Put the above mods into the `mods` folder
