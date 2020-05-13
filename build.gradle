@@ -79,11 +79,20 @@ dependencies {
     implementation 'org.spongepowered:mixin:0.8.1-SNAPSHOT'
 }
 
+def attrs = [
+        'Specification-Title'     : 'Player API',
+        'Specification-Vendor'    : 'Divisor, GioBozza',
+        'Specification-Version'   : '1', // We are version 1 of ourselves
+        'Implementation-Title'    : project.name,
+        'Implementation-Version'  : project.version,
+        'Implementation-Vendor'   : 'Divisor, GioBozza',
+        'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+        'MixinConnector'          : 'api.player.asm.MixinConnector'
+]
+
 jar {
     manifest {
-        attributes([
-                'MixinConnector': 'api.player.asm.MixinConnector'
-        ])
+        attributes(attrs)
     }
 }
 
@@ -106,5 +115,26 @@ publishing {
         maven {
             url "file:///${project.projectDir}/mcmodsrepo"
         }
+    }
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+build.dependsOn sourcesJar
+
+artifacts {
+    archives sourcesJar
+}
+
+processResources {
+    inputs.property 'version', project.version
+    from(sourceSets.main.resources.srcDirs) {
+        include 'META-INF/mods.toml'
+        expand 'version': project.version
+    }
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'META-INF/mods.toml'
     }
 }
